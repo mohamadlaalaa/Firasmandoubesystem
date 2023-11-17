@@ -72,7 +72,7 @@ if(isset($_POST["submit"])){
     $mail->Subject = 'SP - ' . $orderInvoice; 
     $mail->Body = $representative . "--"  . $storelocationgovernorate;
     echo "
-    <script>alert('Done');window.location.replace('welcome.php');</script>
+    <script>window.location.replace('welcome.php');</script>
     ";
     try {
         $mail->send();
