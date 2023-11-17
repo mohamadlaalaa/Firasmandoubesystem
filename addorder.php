@@ -11,6 +11,7 @@ $stmt->execute();
 $stmt->bind_result($fullName);
 $stmt->fetch();
 $stmt->close();
+// hih
 ?>
 
 <?php
