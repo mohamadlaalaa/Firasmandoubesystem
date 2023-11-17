@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900;1000&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Cairo', sans-serif;
+}
+html {
+  font-size: 16px; /* Default font-size for the root element */
+}
+body {
+  background-color: rgb(255, 244, 229);
+  direction: rtl;
+}
+h1 {
+  text-align: center;
+  margin-top: 35px;
+  font-size: 2rem;
+}
+
+.control-button {
+  text-align: center;
+  margin-top: 40px;
+}
+.control-button a {
+  text-decoration: none;
+  color: black;
+  padding: 8px;
+  border-radius: 10px;
+  border: solid 2px;
+  font-weight: bold;
+  transition: 0.5s;
+}
+.add-order {
+  margin-left: 15px;
+  background-color: #e4ef96;
+}
+
+.logout {
+  margin-right: 15px;
+  background-color: #ff6262;
+}
+
+.control-button a:hover {
+  background-color: transparent;
+}
+.order-general{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  
+}
+.order-general-data{
+  border-left: 2px solid black;
+  width: 50%;
+  padding-right: 10px;
+}
+.order-general-details{
+ padding-right: 10px;
+  width: 50%;
+}
+.orders-list {
+  padding: 10px;
+  margin-top: 35px;
+}
+.orders-list h2 {
+  text-align: center;
+}
+.orders-list-content {
+  padding: 10px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.orders-list-content .order {
+  padding: 10px;
+  border-radius: 10px;
+  border: solid 2px;
+  width: 400px;
+  margin: 10px 0;
+  direction: rtl;
+}
+.orders-list-content h2 {
+  text-align: unset;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+.orders-list-content p {
+  margin-bottom: 10px;
+}
+.orders-list-content .order .order-detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.orders-list-content .order .order-detail .date {
+  font-weight: 300;
+}
