@@ -11,7 +11,6 @@ $stmt->execute();
 $stmt->bind_result($fullName);
 $stmt->fetch();
 $stmt->close();
-// sdd
 ?>
 
 <?php
