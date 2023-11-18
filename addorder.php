@@ -366,7 +366,7 @@ function generateRandomNumber() {
 const randomNumber = generateRandomNumber();
 const randomInput = document.getElementById("order-id");
 randomInput.value = randomNumber;
-console.log(random15DigitNumber);
+
 
 //======================================
 
