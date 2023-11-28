@@ -263,14 +263,31 @@ if(isset($_POST["submit"])){
           
         </div>
         <input type="text" name="orderid" id="order-id" style="display:none;" readonly/>
-        <button type="submit" class="login__button" name="submit">حفظ الطلبية</button>
+        <button type="submit" class="login__button" name="submit" id="submitBtn">حفظ الطلبية</button>
         
       </form>
       <button onclick="getLocation()" id="location-btn" class="location-btn">الحصول على الموقع الحالي</button>
 
     </div>
     <script>
+// preveting multi submitting 
 
+        // Get the form and the submit button
+        var formElement = document.querySelector('.login__form');
+        var submitBtn = document.getElementById('submitBtn');
+
+        // Add a click event listener to the submit button
+        formElement.addEventListener('submit', function () {
+            // Disable the submit button to prevent multiple submissions
+            submitBtn.style.pointerEvents = "none";
+            submitBtn.style.opacity = "0.6";
+            submitBtn.style.cursor = "not-allowed";
+            submitBtn.innerText = "يرجى الانتظار  ...";
+    
+        });
+
+//===============================================================================
+   
 
 //==================getting location======================
     function getLocation() {
