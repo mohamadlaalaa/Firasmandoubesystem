@@ -1,7 +1,7 @@
 <?php
 $dbhost = "localhost";
 $dbuser = "root";
-$dbpass = "";
+$dbpass = "ll";
 $dbname = "mandoub";
 
 if(!$con = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname))
