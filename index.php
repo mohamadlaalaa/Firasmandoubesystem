@@ -257,7 +257,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       }
     </style>
 
-    <title>Firas Laalaa</title>
+    <title>Firas Laalaa Mohamad</title>
   </head>
   <body>
     <div class="login">
