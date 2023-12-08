@@ -32,9 +32,6 @@ if(isset($_POST["submit"])){
 
     // Create the new variable
     $orderInvoice = $randomDigits;
-
-
-
     $storecategorie = $_POST["store-categorie"];
     $storetype = $_POST["store-type"];
     $companyname = $_POST["company-name"];
