@@ -10,35 +10,31 @@ require '../phpmailer/src/SMTP.php';
 if(isset($_POST["submit"])){
     $orderIdNumber = $_POST["orderid"];
     $digits = str_split((string) $orderIdNumber);
-
     // Shuffle the array of digits
     shuffle($digits);
-
     // Take the first 5 digits
     $randomDigits = implode('', array_slice($digits, 0, 5));
-
     // Create the new variable
     $orderInvoice = $randomDigits;
-    $storecategorie = $_POST["store-categorie"];
-    $storetype = $_POST["store-type"];
-    $companyname = $_POST["company-name"];
-    $companynumber = $_POST["company-number"];
-    $storelocationgovernorate = $_POST["store-location-governorate"];
-    $locationtext = $_POST["location-text"];
-    $locationmap = $_POST["location-map"];
-    $storereceivername = $_POST["store-receiver-name"];
-    $storereceivernumber = $_POST["store-receiver-number"];
-    $note = $_POST["note"];
-    $representative = $_POST["representative"];
-    $status = $_POST["status"];
-    $spoonboxcount = abs($_POST["spoon-box-count"]);
-    $spoonbagcount = abs($_POST["spoon-bag-count"]);
+    $storecategorie = isset($_POST["store-categorie"]) ? $_POST["store-categorie"] : '';
+    $storetype = isset($_POST["store-type"]) ? $_POST["store-type"] : '';
+    $companyname = isset($_POST["company-name"]) ? $_POST["company-name"] : '';
+    $companynumber = isset($_POST["company-number"]) ? $_POST["company-number"] : '';
+    $storelocationgovernorate = isset($_POST["store-location-governorate"]) ? $_POST["store-location-governorate"] : '';
+    $locationtext = isset($_POST["location-text"]) ? $_POST["location-text"] : '';
+    $locationmap = isset($_POST["location-map"]) ? $_POST["location-map"] : '';
+    $storereceivername = isset($_POST["store-receiver-name"]) ? $_POST["store-receiver-name"] : '';
+    $storereceivernumber = isset($_POST["store-receiver-number"]) ? $_POST["store-receiver-number"] : '';
+    $note = isset($_POST["note"]) ? $_POST["note"] : '';
+    $representative = isset($_POST["representative"]) ? $_POST["representative"] : '';
+    $status = isset($_POST["status"]) ? $_POST["status"] : '';
+    $spoonboxcount = isset($_POST["spoon-box-count"]) ? abs($_POST["spoon-box-count"]) : 0;
+    $spoonbagcount = isset($_POST["spoon-bag-count"]) ? abs($_POST["spoon-bag-count"]) : 0;
     $totalPrice = $spoonboxcount * 15.5 + $spoonbagcount * 6.25;
     date_default_timezone_set('Asia/Beirut');
     $date = date('Y-m-d H:i:s');
     $query = "INSERT INTO orders VALUES('' ,'$orderIdNumber','$orderInvoice','$storecategorie', '$storetype' ,'$companyname','$companynumber' , '$storelocationgovernorate',
      '$locationtext','$locationmap', '$storereceivername','$storereceivernumber' ,'$note', '$representative' , '$status','$spoonboxcount','$spoonbagcount','$totalPrice','$date')";
-
     mysqli_query($con , $query);
     
     

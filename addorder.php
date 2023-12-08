@@ -38,7 +38,7 @@ $stmt->close();
   <body>
     <div class="login">
 
-      <form action="./php/add-orders-fn.php" method="post" class="login__form">
+      <form action="./php/add-orders-fn.php" method="post" class="login__form" id="addorder-form" onsubmit="return checkForm();">
         <a href="welcome.php">الغاء</a>
         <h1 class="login__title">الرجاء ادخال تفاصيل الطلبية</h1>
         
@@ -105,7 +105,7 @@ $stmt->close();
               class="login__input"
             />
           </div>
-          <div class="login__box other-hide">
+          <div class="login__box other-hide" id="location-map-div">
             <input
               type="text"
               placeholder="العنوان خريطة :"
@@ -211,21 +211,7 @@ $stmt->close();
 
     </div>
     <script>
-// preveting multi submitting 
 
-        // Get the form and the submit button
-        var formElement = document.querySelector('.login__form');
-        var submitBtn = document.getElementById('submitBtn');
-
-        // Add a click event listener to the submit button
-        formElement.addEventListener('submit', function () {
-            // Disable the submit button to prevent multiple submissions
-            submitBtn.style.pointerEvents = "none";
-            submitBtn.style.opacity = "0.6";
-            submitBtn.style.cursor = "not-allowed";
-            submitBtn.innerText = "يرجى الانتظار  ...";
-    
-        });
 
 //===============================================================================
    
@@ -272,16 +258,21 @@ $stmt->close();
       var cusName = document.getElementById('company-name');
       var cusNumber = document.getElementById('company-number');
       var locationBtn = document.getElementById('location-btn'); 
+      
+      
+      
+      
       if (selectedOption === 'فردي'){
         cusName.placeholder = 'أسم الزبون :';
         cusNumber.placeholder = 'رقم الزبون :';
         locationBtn.style.display="none";
         
+          
       }else{
         cusName.placeholder = 'أسم المؤسسة :';
         cusNumber.placeholder = 'رقم المؤسسة :';
         locationBtn.style.display="block";
-
+        
       }
       // Loop through each item and toggle visibility based on the selected option
       items.forEach(function(item) {
@@ -326,7 +317,49 @@ const randomInput = document.getElementById("order-id");
 randomInput.value = randomNumber;
 
 
-//======================================
+// check if input dont have value =============================================
+// form submission =========================================
+
+// input who are obliged to fill 
+var locationMapDiv = document.getElementById("location-map-div");
+function checkForm() {
+    // List of input field IDs
+    if(locationMapDiv.style.display === 'none'){
+      var inputFields = ['company-name' , 'company-number' , 'location-text'];
+    }else{
+      var inputFields = ['store-type', 'company-name', 'company-number', 'location-text', 'location-map', 'store-receiver-name', 'store-receiver-number'];
+    }
+        
+
+        // Check each input field for empty values
+        for (var i = 0; i < inputFields.length; i++) {
+            var fieldId = inputFields[i];
+            var fieldValue = document.getElementById(fieldId).value;
+
+            if (fieldValue.trim() === '') {
+                // alert('The field ' + fieldId + ' is required.');
+                alert('يرجى تعبئة جميع المعلومات  ! ');
+                return false; // Stop form submission
+            }
+        }
+        // preveting multi submitting 
+
+            // Get the form and the submit button
+            var submitBtn = document.getElementById('submitBtn');
+            // Add a click event listener to the submit button
+                // Disable the submit button to prevent multiple submissions
+                submitBtn.style.pointerEvents = "none";
+                submitBtn.style.opacity = "0.6";
+                submitBtn.style.cursor = "not-allowed";
+                submitBtn.innerText = "يرجى الانتظار  ...";
+        
+            
+        return true; // Allow form submission
+}
+//==================================================================================
+
+  
+
 
 </script>
 
