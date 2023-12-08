@@ -59,7 +59,6 @@ if (isset($_GET['id'])) {
 <body>
     <?php 
             $productDetails = $result->fetch_assoc();
-        
             if($userDetails['isAdmin']){
                 if($productDetails['store-categorie'] === 'مؤسسة'){
                     echo '
