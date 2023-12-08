@@ -47,7 +47,7 @@ if(isset($_POST["submit"])){
     $mail->SMTPSecure = 'ssl'; // Change 'ssl' to 'tls'
     $mail->Port = 465; // Update to the correct port for TLS
     $mail->setFrom('hbaba9377@gmail.com');
-    $mail->addAddress('mohamad.laalaa700@gmail.com');
+    $mail->addAddress('hbaba9377@gmail.com');
     $mail->isHTML(true);
     $mail->Subject = 'SP - ' . $orderInvoice; 
     $mail->Body = $representative . "--"  . $storelocationgovernorate;
