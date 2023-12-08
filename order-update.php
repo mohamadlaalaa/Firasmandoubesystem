@@ -79,10 +79,14 @@ if (isset($_GET['id'])) {
                         </div>
                         
                         <div class="login__box other-hide">
-                            <select name="store-type" id="store-type">
-                            <option value="" disabled selected>أختر نوع المؤسسة</option>
-                            <option value="سوبر ماركت">سوبر ماركت</option>
-                            <option value="صيدلية">صيدلية</option>
+                            <select name="store-type" id="store-type">';
+                            $sqlstoretype = "SELECT * FROM `store-type` ";
+                            $resultstoretype = $con->query($sqlstoretype);
+                            while ($row = $resultstoretype->fetch_assoc()) {
+                                $selected = ($row['types'] == $productDetails['store-type']) ? 'selected' : '';
+                                echo '<option value="' . $row['types'] . '" ' . $selected . '>' . $row['types'] . '</option>';
+                            }
+                            echo'
                             </select>
                         </div>
                         <p class="label">اسم المؤسسة :</p>
