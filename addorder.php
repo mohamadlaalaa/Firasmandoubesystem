@@ -120,10 +120,16 @@ if(isset($_POST["submit"])){
           </select>
         </div>
         <div class="login__box other-hide">
-          <select name="store-type" id="store-type">
+        <select name="store-type" id="store-type">
             <option value="" disabled selected>أختر نوع المؤسسة</option>
-            <option value="سوبر ماركت">سوبر ماركت</option>
-            <option value="صيدلية">صيدلية</option>
+          <?php
+          $sqlstoretype = "SELECT * FROM `store-type` ";
+          $resultstoretype = $con->query($sqlstoretype);
+          while ($row = $resultstoretype->fetch_assoc()) {
+            // Use the values in the select options
+            echo '<option value="' . $row['types'] . '">' . $row['types'] . '</option>';
+        }
+           ?>
           </select>
         </div>
           <div class="login__box">
@@ -148,15 +154,17 @@ if(isset($_POST["submit"])){
           </div>
           <div class="login__box">
             <select name="store-location-governorate" id="store-location-governorate">
-            <option value="محافظة لبنان الشمالي">محافظة لبنان الشمالي</option>
-            <option value="محافظة بيروت">محافظة بيروت</option>
-            <option value="محافظة جبل لبنان">محافظة جبل لبنان</option>
-            <option value="محافظة لبنان الجنوبي">محافظة لبنان الجنوبي</option>
-            <option value="محافظة البقاع">محافظة البقاع</option>
-            <option value="محافظة النبطية">محافظة النبطية</option>
-            <option value="محافظة بعلبك الهرمل">محافظة بعلبك الهرمل</option>
-            <option value="محافظة عكار">محافظة عكار</option>
-            </select>
+            
+            <?php
+          $sqlgovernorate = "SELECT * FROM `governorate` ";
+          $resultgovernorate = $con->query($sqlgovernorate);
+          while ($row = $resultgovernorate->fetch_assoc()) {
+            // Use the values in the select options
+            echo '<option value="' . $row['governorate-name'] . '">' . $row['governorate-name'] . '</option>';
+        }
+           ?>
+            
+          </select>
           </div>
           <div class="login__box">
             <input
