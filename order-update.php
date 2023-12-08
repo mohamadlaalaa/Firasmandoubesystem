@@ -3,6 +3,7 @@ session_start();
 include("connection.php");
 include("functions.php");
 
+
 $user_data = check_login($con);
 $userID = $_SESSION['user_id'];
 $stmt = $con->prepare("SELECT `name` FROM `users` WHERE `user_id` = ?");
@@ -18,47 +19,7 @@ if (isset($_GET['id'])) {
     $result = $con->query("SELECT * FROM orders WHERE `order-id` = $orderId");
     $userDetails = $userResult->fetch_assoc();}
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
-        $updatedStoreType = isset($_POST['store-type']) ? $_POST['store-type'] : '';
-        $updatedCompanyName = isset($_POST['company-name']) ? $_POST['company-name'] : '';
-        $updatedCompanyNumber = isset($_POST['company-number']) ? $_POST['company-number'] : '';
-        $updatedStoreLocationGovernorate = isset($_POST['store-location-governorate']) ? $_POST['store-location-governorate'] : '';
-        $updatedLocationText = isset($_POST['location-text']) ? $_POST['location-text'] : '';
-        $updatedStoreReceiverName = isset($_POST['store-receiver-name']) ? $_POST['store-receiver-name'] : '';
-        $updatedStoreReceiverNumber = isset($_POST['store-receiver-number']) ? $_POST['store-receiver-number'] : '';
-        $updatedNote = isset($_POST['note']) ? $_POST['note'] : '';
-        $updatedStatus = isset($_POST['status']) ? $_POST['status'] : '';
-        $updatedSpoonBoxCount = isset($_POST['spoon-box-count']) ? $_POST['spoon-box-count'] : '';
-        $updatedSpoonBagCount = isset($_POST['spoon-bag-count']) ? $_POST['spoon-bag-count'] : '';
-        $updatedTotalPrice = $updatedSpoonBoxCount * 15.5 + $updatedSpoonBagCount * 6.25;
-        $sql = "UPDATE orders 
-            SET `store-type` = '$updatedStoreType', 
-                `company-name` = '$updatedCompanyName', 
-                `company-number` = '$updatedCompanyNumber', 
-                `store-location-governorate` = '$updatedStoreLocationGovernorate', 
-                `location-text` = '$updatedLocationText', 
-                `store-receiver-name` = '$updatedStoreReceiverName', 
-               `store-receiver-number` = '$updatedStoreReceiverNumber', 
-                note = '$updatedNote', 
-                `status` = '$updatedStatus', 
-                `spoon-box-count` = '$updatedSpoonBoxCount', 
-                `spoon-bag-count` = '$updatedSpoonBagCount', 
-                `total-price`= '$updatedTotalPrice'
-            WHERE `order-id` = '$orderId'";
-            $result = $con->query($sql);
-
-            if ($result === TRUE) {
-        
-                echo "
-    <script>alert('Done');window.location.replace('welcome.php');</script>
-    ";
-            } else {
-                echo "Error updating record: " . $conn->error;
-            }
-        
-            
-        }
 
 ?>
 <!DOCTYPE html>
@@ -105,7 +66,7 @@ if (isset($_GET['id'])) {
 
                         <div class="login">
 
-                        <form method="post" class="login__form">
+                        <form action="./php/update-order-fn.php?id=' . $orderId . '" method="post" class="login__form">
                         <a href="welcome.php">الغاء</a>
                         <h1 class="login__title">الرجاء تعديل تفاصيل الطلبية</h1>
                         
