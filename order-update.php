@@ -62,7 +62,6 @@ if (isset($_GET['id'])) {
             if($userDetails['isAdmin']){
                 if($productDetails['store-categorie'] === 'مؤسسة'){
                     echo '
-
                         <div class="login">
 
                         <form action="./php/update-order-fn.php?id=' . $orderId . '" method="post" class="login__form">
@@ -251,7 +250,7 @@ if (isset($_GET['id'])) {
 
                         <div class="login">
 
-                        <form method="post" class="login__form">
+                        <form action="./php/update-order-fn.php?id=' . $orderId . '" method="post" class="login__form">
                         <a href="welcome.php">الغاء</a>
                         <h1 class="login__title">الرجاء تعديل تفاصيل الطلبية</h1>
                         

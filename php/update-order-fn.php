@@ -4,7 +4,6 @@ include("../connection.php");
 if (isset($_GET['id'])) {
     $orderId = $_GET['id'];}
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
     $updatedStoreType = isset($_POST['store-type']) ? $_POST['store-type'] : '';
     $updatedCompanyName = isset($_POST['company-name']) ? $_POST['company-name'] : '';
     $updatedCompanyNumber = isset($_POST['company-number']) ? $_POST['company-number'] : '';
@@ -36,8 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result === TRUE) {
     
             echo "
-<script>alert('Done');window.location.replace('../welcome.php');</script>
-";
+            <script>alert('Done');window.location.replace('../welcome.php');</script>
+            ";
         } else {
             echo "Error updating record: " . $conn->error;
         }

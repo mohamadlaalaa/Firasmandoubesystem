@@ -81,7 +81,7 @@ function updateTotal() {
     var boxPrice = 15.5;
 
     // Calculate the total cost
-    var totalCost = bagCount * bagPrice + boxCount * boxPrice;
+    var totalCost = Math.abs(bagCount * bagPrice) + Math.abs(boxCount * boxPrice);
 
     // Display the total on the page
     document.getElementById('total-cost').textContent = 'السعر الاجمالي : ' + totalCost.toFixed(2) + "$";
