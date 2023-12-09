@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../connection.php");
+include("../../connection.php");
 if (isset($_GET['id'])) {
     $orderId = $_GET['id'];}
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result === TRUE) {
     
             echo "
-            <script>alert('Done');window.location.replace('../welcome.php');</script>
+            <script>window.location.replace('../../welcome.php');</script>
             ";
         } else {
             echo "Error updating record: " . $conn->error;

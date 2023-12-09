@@ -38,7 +38,7 @@ $stmt->close();
   <body>
     <div class="login">
 
-      <form action="./php/add-orders-fn.php" method="post" class="login__form" id="addorder-form" onsubmit="return checkForm();">
+      <form action="./assets/php/add-orders-fn.php" method="post" class="login__form" id="addorder-form" onsubmit="return checkForm();">
         <a href="welcome.php">الغاء</a>
         <h1 class="login__title">الرجاء ادخال تفاصيل الطلبية</h1>
         

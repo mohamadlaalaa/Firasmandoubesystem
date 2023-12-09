@@ -1,11 +1,11 @@
 <?php
 session_start();
-include("../connection.php");
+include("../../connection.php");
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require '../phpmailer/src/Exception.php';
-require '../phpmailer/src/PHPMailer.php';
-require '../phpmailer/src/SMTP.php';
+require './phpmailer/src/Exception.php';
+require './phpmailer/src/PHPMailer.php';
+require './phpmailer/src/SMTP.php';
 
 if(isset($_POST["submit"])){
     $orderIdNumber = $_POST["orderid"];
@@ -52,7 +52,7 @@ if(isset($_POST["submit"])){
     $mail->Subject = 'SP - ' . $orderInvoice; 
     $mail->Body = $representative . "--"  . $storelocationgovernorate;
     echo "
-    <script>window.location.replace('../welcome.php');</script>
+    <script>window.location.replace('../../welcome.php');</script>
     ";
     try {
         $mail->send();

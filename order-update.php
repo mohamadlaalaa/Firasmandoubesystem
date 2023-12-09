@@ -64,7 +64,7 @@ if (isset($_GET['id'])) {
                     echo '
                         <div class="login">
 
-                        <form action="./php/update-order-fn.php?id=' . $orderId . '" method="post" class="login__form">
+                        <form action="./assets/php/update-order-fn.php?id=' . $orderId . '" method="post" class="login__form">
                         <a href="welcome.php">الغاء</a>
                         <h1 class="login__title">الرجاء تعديل تفاصيل الطلبية</h1>
                         
@@ -113,15 +113,14 @@ if (isset($_GET['id'])) {
                             </div>
                             <p class="label">المحافظة :</p>
                             <div class="login__box">
-                            <select name="store-location-governorate" id="store-location-governorate">
-                                <option value="محافظة لبنان الشمالي" ' . (($productDetails['store-location-governorate'] == 'محافظة لبنان الشمالي') ? 'selected' : '') . '>محافظة لبنان الشمالي</option>
-                                <option value="محافظة بيروت" ' . (($productDetails['store-location-governorate'] == 'محافظة بيروت') ? 'selected' : '') . '>محافظة بيروت</option>
-                                <option value="محافظة جبل لبنان" ' . (($productDetails['store-location-governorate'] == 'محافظة جبل لبنان') ? 'selected' : '') . '>محافظة جبل لبنان</option>
-                                <option value="محافظة لبنان الجنوبي" ' . (($productDetails['store-location-governorate'] == 'محافظة لبنان الجنوبي') ? 'selected' : '') . '>محافظة لبنان الجنوبي</option>
-                                <option value="محافظة البقاع" ' . (($productDetails['store-location-governorate'] == 'محافظة البقاع') ? 'selected' : '') . '>محافظة البقاع</option>
-                                <option value="محافظة النبطية" ' . (($productDetails['store-location-governorate'] == 'محافظة النبطية') ? 'selected' : '') . '>محافظة النبطية</option>
-                                <option value="محافظة بعلبك الهرمل" ' . (($productDetails['store-location-governorate'] == 'محافظة بعلبك الهرمل') ? 'selected' : '') . '>محافظة بعلبك الهرمل</option>
-                                <option value="محافظة عكار" ' . (($productDetails['store-location-governorate'] == 'محافظة عكار') ? 'selected' : '') . '>محافظة عكار</option>
+                            <select name="store-location-governorate" id="store-location-governorate">';
+                            $sqlgov = "SELECT * FROM `governorate` ";
+                            $resultgov = $con->query($sqlgov);
+                            while ($row = $resultgov->fetch_assoc()) {
+                                $selected = ($row['governorate-name'] == $productDetails['store-location-governorate']) ? 'selected' : '';
+                                echo '<option value="' . $row['governorate-name'] . '" ' . $selected . '>' . $row['governorate-name'] . '</option>';
+                            }
+                            echo'
                             </select>
                             </div>
                             <p class="label">العنوان كتابة :</p>
@@ -250,7 +249,7 @@ if (isset($_GET['id'])) {
 
                         <div class="login">
 
-                        <form action="./php/update-order-fn.php?id=' . $orderId . '" method="post" class="login__form">
+                        <form action="./assets/php/update-order-fn.php?id=' . $orderId . '" method="post" class="login__form">
                         <a href="welcome.php">الغاء</a>
                         <h1 class="login__title">الرجاء تعديل تفاصيل الطلبية</h1>
                         
@@ -287,15 +286,15 @@ if (isset($_GET['id'])) {
                             </div>
                             <p class="label">المحافظة :</p>
                             <div class="login__box">
-                            <select name="store-location-governorate" id="store-location-governorate">
-                                <option value="محافظة لبنان الشمالي" ' . (($productDetails['store-location-governorate'] == 'محافظة لبنان الشمالي') ? 'selected' : '') . '>محافظة لبنان الشمالي</option>
-                                <option value="محافظة بيروت" ' . (($productDetails['store-location-governorate'] == 'محافظة بيروت') ? 'selected' : '') . '>محافظة بيروت</option>
-                                <option value="محافظة جبل لبنان" ' . (($productDetails['store-location-governorate'] == 'محافظة جبل لبنان') ? 'selected' : '') . '>محافظة جبل لبنان</option>
-                                <option value="محافظة لبنان الجنوبي" ' . (($productDetails['store-location-governorate'] == 'محافظة لبنان الجنوبي') ? 'selected' : '') . '>محافظة لبنان الجنوبي</option>
-                                <option value="محافظة البقاع" ' . (($productDetails['store-location-governorate'] == 'محافظة البقاع') ? 'selected' : '') . '>محافظة البقاع</option>
-                                <option value="محافظة النبطية" ' . (($productDetails['store-location-governorate'] == 'محافظة النبطية') ? 'selected' : '') . '>محافظة النبطية</option>
-                                <option value="محافظة بعلبك الهرمل" ' . (($productDetails['store-location-governorate'] == 'محافظة بعلبك الهرمل') ? 'selected' : '') . '>محافظة بعلبك الهرمل</option>
-                                <option value="محافظة عكار" ' . (($productDetails['store-location-governorate'] == 'محافظة عكار') ? 'selected' : '') . '>محافظة عكار</option>
+                            <select name="store-location-governorate" id="store-location-governorate">';
+                            $sqlgov = "SELECT * FROM `governorate` ";
+                            $resultgov = $con->query($sqlgov);
+                            while ($row = $resultgov->fetch_assoc()) {
+                                $selected = ($row['governorate-name'] == $productDetails['store-location-governorate']) ? 'selected' : '';
+                                echo '<option value="' . $row['governorate-name'] . '" ' . $selected . '>' . $row['governorate-name'] . '</option>';
+                            }
+                            echo'
+                                
                             </select>
                             </div>
                             <p class="label">العنوان كتابة :</p>
@@ -384,7 +383,6 @@ if (isset($_GET['id'])) {
                         ';
                 }
             }else{
-                
                 if($productDetails['status'] === 'قيد الانتظار'){
                     if($productDetails['store-categorie'] === 'مؤسسة'){
                         echo '
