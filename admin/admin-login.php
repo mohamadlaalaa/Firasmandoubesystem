@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 if ($result && mysqli_num_rows($result) > 0) {
                     // Password is correct
                     $_SESSION['user_id'] = $user_data['user_id'];
-                    header("Location: admin-welcome.php");
+                    header("Location: ../test/dashboard-home.html");
                     die;
                 } else {
                     // Incorrect password

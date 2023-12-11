@@ -5,10 +5,10 @@ include("functions.php");
 
 $user_data = check_login($con);
 $userID = $_SESSION['user_id'];
-$stmt = $con->prepare("SELECT `name` FROM `users` WHERE `user_id` = ?");
+$stmt = $con->prepare("SELECT `name`, `isAdmin` FROM `users` WHERE `user_id` = ?");
 $stmt->bind_param("i", $userID);
 $stmt->execute();
-$stmt->bind_result($fullName);
+$stmt->bind_result($fullName, $isAdmin);
 $stmt->fetch();
 $stmt->close();
 
@@ -33,6 +33,14 @@ $ordersResult = $ordersStmt->get_result();
     <div class="control-button">
       <a href="addorder.php" class="add-order">اضافة طلب</a>
       <a href="#" class="logout" id="logoutLink">خروج</a>
+      <?php
+      if($isAdmin){
+        echo '
+        <a href="./admin/index.php" style="margin-right:30px;background-color:#FBF6EE;">Admin page</a>
+        ';
+      }
+      ?>
+      
     </div>
 
     <div class="orders-list">
